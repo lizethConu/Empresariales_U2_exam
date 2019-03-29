@@ -7,25 +7,25 @@ var kittySchema = new mongoose.Schema({
     price: {type: Number, required:true},
     description: { type:String, required:true},
     quantity: { type:Number, required:true},
-    minimun: { type:Number, required:true},
+    minimum: { type:Number, required:true},
   });
 
   var Kitten = mongoose.model('Kitten', kittySchema, 'kitten');
-  var puff = new Kitten({code: '123',pice:53,description:'this is a exam',quantity:5,minimun:10});
+  var puff = new Kitten({code: '123',price:53,description:'this is a exam',quantity:12,minimum:10});
 
 
-  puff.save(function ( fluffy,err) {
+  /*puff.save(function ( fluffy,err) {
     if (err) return console.log(err);
-    else console.log("inserccion exitosa");
-  });
+    else console.log("insercion exitosa");
+  });*/
 
   Kitten.find({}, function (err, kittens) {
     if (err) return console.log(err);
     else{
-      for(i=0;i<kittens.length();i++){
-        if(kittens.quantity<kittens.minimun){
-          console.log(kittens[i]);
-        }   
-      }   
+      kittens.forEach(item=>{
+        if(item.quantity<item.minimum){
+          console.log(item);
+        }
+      });
     } 
   });
