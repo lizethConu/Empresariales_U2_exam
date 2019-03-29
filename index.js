@@ -22,8 +22,10 @@ var kittySchema = new mongoose.Schema({
   Kitten.find({}, function (err, kittens) {
     if (err) return console.log(err);
     else{
+      for(i=0;i<kittens.length();i++){
         if(kittens.quantity<kittens.minimun){
-          console.log(kittens);
-        }      
+          console.log(kittens[i]);
+        }   
+      }   
     } 
   });
